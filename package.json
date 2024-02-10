@@ -1,0 +1,27 @@
+{
+  "name": "koa-starter",
+  "private": true,
+  "dependencies": {
+    "@atproto/api": "^0.9.6",
+    "@koa/router": "^10.0.0",
+    "koa": "^2.13.1",
+    "koa-logger": "^3.2.1",
+    "koa-pino-logger": "^3.0.0"
+  },
+  "scripts": {
+    "start": "node --no-warnings --watch --env-file=.env app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "packages": "npm list --depth=0",
+    "packages:clear": "rm -f -R node_modules && rm -f package-lock.json",
+    "packages:install": "npm run packages:clear && npm install",
+    "packages:outdated": "npm outdated --depth=0"
+  },
+  "type": "module",
+  "prettier": {
+    "arrowParens": "always",
+    "printWidth": 80,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all"
+  }
+}
