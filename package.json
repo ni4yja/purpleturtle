@@ -3,10 +3,9 @@
   "private": true,
   "dependencies": {
     "@atproto/api": "^0.9.6",
+    "@koa/cors": "^5.0.0",
     "@koa/router": "^10.0.0",
-    "koa": "^2.13.1",
-    "koa-logger": "^3.2.1",
-    "koa-pino-logger": "^3.0.0"
+    "koa": "^2.13.1"
   },
   "scripts": {
     "start": "node --no-warnings --watch --env-file=.env app.js",

@@ -1,34 +1,17 @@
 import Koa from 'koa';
-import logger from 'koa-logger';
-import Router from '@koa/router';
-import pkg from '@atproto/api';
-const { SERVICE, IDENTIFIER, PASSWORD } = process.env;
+import { router } from './routes/index.js';
+import { errorHandler } from './middleware/errorHandler.js';
+import { initAgent } from './agent/index.js';
 
 const app = new Koa();
-const router = new Router();
-const { BskyAgent } = pkg;
 
-async function initAgent() {
-  const agent = new BskyAgent({
-    service: SERVICE,
-  });
-  await agent.login({
-    identifier: IDENTIFIER,
-    password: PASSWORD,
-  });
-}
-
+// Initialize agent
 initAgent().catch(console.error);
 
-// middlewares
-app.use(logger());
+// Middleware
+app.use(errorHandler);
 
-const helloWorld = (ctx) => {
-  ctx.body = `Hello World!!! Hello Darkness`;
-};
-
-router.get('/', helloWorld);
-
+// Routes
 app.use(router.routes());
 app.use(router.allowedMethods());
 
